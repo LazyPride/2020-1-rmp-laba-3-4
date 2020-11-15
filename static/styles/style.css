@@ -1,0 +1,10 @@
+.room {
+    display: block;
+    padding: 12px 6px;
+    margin-bottom: 6px;
+    background-color: #C6C6C6;
+}
+
+.room > p {
+    line-height: 1
+}
