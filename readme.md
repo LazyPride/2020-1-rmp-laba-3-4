@@ -3,13 +3,13 @@
  - [ ] Turn on/off light
  - [ ] Brightness controller (slider)
  - [ ] Temperature controller (slider)
- - [ ] Server
- - [ ] Web-page
+ - [X] Server
+ - [X] Web-page
 ## Under 75
- - [ ] Server
- - [ ] html page
- - [ ] css stylesheet
- - [ ] 2 or more rooms
+ - [X] Server
+ - [X] html page
+ - [X] css stylesheet
+ - [X] 2 or more rooms
  - [ ] In every room - light on/off, temperature monitor
  - [ ] logging into CLI
  - [ ] Controlling through web page
