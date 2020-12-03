@@ -21,6 +21,7 @@
   width: 60px;
   height: 34px;
   margin: 6px;
+  vertical-align: middle;
 }
 
 /* Hide default HTML checkbox */

@@ -1,10 +1,47 @@
-.room {
-    display: block;
-    padding: 12px 6px;
-    margin-bottom: 6px;
-    background-color: #C6C6C6;
+.apartment {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-.room > p {
-    line-height: 1
+.room {
+    display: block;
+    padding: 12px 18px;
+    margin-bottom: 6px;
+    background-color: #C6C6C6;
+    margin: 12px;
+}
+
+.room-title {
+    font-size: 48px;
+    margin-bottom: 6px;
+}
+
+.room-control-panels-collection {
+    display: flex;
+}
+.room-control-panel {
+    background-color: #A2C8C8;
+    padding: 12px 18px;
+}
+
+.room-control-panel-title {
+    font-size: 32px;
+    white-space: nowrap;
+    margin-bottom: 10px;
+}
+
+.room-control-component {
+    background-color: #ABCDEF;
+    margin-bottom: 6px;
+    padding: 6px;
+}
+
+.room-control-component-title {
+    vertical-align: middle;
+    font-size: 24px;
+}
+
+.room-status-component {
+    font-size: 24px;
 }
