@@ -3,6 +3,7 @@
 <head>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style-toggle-switch.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style-slider.css') }}">
 </head>
 
   <body>
@@ -26,7 +27,9 @@
                         <span>{{room.lightState}}</span>
                     </div>
                     <div class="room-control-component">
-                        <div class="slider">slider</div>
+                        <div class="slidecontainer">
+                            <input type="range" min="0" max="100" value="50" class="slider">
+                        </div>
                     </div>
                     <div class="room-status-component">
                         The light brightness is 
@@ -46,7 +49,9 @@
                         <span>value</span>
                     </div>
                     <div class="room-control-component">
-                        <div class="slider">slider</div>
+                        <div class="slidecontainer">
+                            <input type="range" min="0" max="100" value="50" class="slider">
+                        </div>
                     </div>
                     <div class="room-status-component">
                         The temperature is 
