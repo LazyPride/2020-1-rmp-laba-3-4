@@ -6,14 +6,48 @@
 
   <body>
     <h1>Test JSON</h1>
-    {% for room in rooms %}
-    <div class="room">
-        <p> roomName is: {{room.roomName}}</p>
-        <p> lightState is: {{room.lightState}}</p>
-        <p> lightBrightness is: {{room.lightBrightness}}</p>
-        <p> temperature is: {{room.temperature}}</p>
+    
+    <div class="apartment">
+        {% for room in rooms %}
+        <div class="room">
+            <div class="room-title">"{{room.roomName}}"</div>
+            <div class="room-control-panel">
+                <div class="room-control-panel-title">Light control panel</div>
+                <div class="room-control-component">
+                    <div class="on-off-button">on-off-button</div>
+                </div>
+                <div class="room-status-component">
+                    The light is 
+                    <span>{{room.lightState}}</span>
+                </div>
+                <div class="room-control-component">
+                    <div class="slider">slider</div>
+                </div>
+                <div class="room-status-component">
+                    The light brightness is 
+                    <span>{{room.lightBrightness}}</span>
+                </div>
+            </div>
+            <div class="room-control-panel">
+                <div class="room-control-panel-title">Temperature control panel</div>
+                <div class="room-control-component">
+                    <div class="on-off-button">on-off-button</div>
+                </div>
+                <div class="room-status-component">
+                    The heating is 
+                    <span>value</span>
+                </div>
+                <div class="room-control-component">
+                    <div class="slider">slider</div>
+                </div>
+                <div class="room-status-component">
+                    The temperature is 
+                    <span>{{room.temperature}}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
     
   </body>
 </html>
