@@ -1,8 +1,12 @@
 from flask import Flask
 from flask import json
 from flask import render_template 
+from flask_socketio import SocketIO
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 's1ckret'
+socketio = SocketIO(app)
+
 @app.route('/')
 def hello_world():
     # TODO: Handle exception if file not found
@@ -15,4 +19,4 @@ def hello_world():
     return render_template("controls.html", rooms=fileJSON)
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    socketio.run(app, debug=True) 
