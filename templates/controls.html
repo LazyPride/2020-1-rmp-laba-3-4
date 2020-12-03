@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style-toggle-switch.css') }}">
 </head>
 
   <body>
@@ -11,38 +12,46 @@
         {% for room in rooms %}
         <div class="room">
             <div class="room-title">"{{room.roomName}}"</div>
-            <div class="room-control-panel">
-                <div class="room-control-panel-title">Light control panel</div>
-                <div class="room-control-component">
-                    <div class="on-off-button">on-off-button</div>
+            <div class="room-control-panels-collection">
+                <div class="room-control-panel">
+                    <div class="room-control-panel-title">Light control panel</div>
+                    <div class="room-control-component">
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="switch-slider round"></span>
+                        </label>
+                    </div>
+                    <div class="room-status-component">
+                        The light is 
+                        <span>{{room.lightState}}</span>
+                    </div>
+                    <div class="room-control-component">
+                        <div class="slider">slider</div>
+                    </div>
+                    <div class="room-status-component">
+                        The light brightness is 
+                        <span>{{room.lightBrightness}}</span>
+                    </div>
                 </div>
-                <div class="room-status-component">
-                    The light is 
-                    <span>{{room.lightState}}</span>
-                </div>
-                <div class="room-control-component">
-                    <div class="slider">slider</div>
-                </div>
-                <div class="room-status-component">
-                    The light brightness is 
-                    <span>{{room.lightBrightness}}</span>
-                </div>
-            </div>
-            <div class="room-control-panel">
-                <div class="room-control-panel-title">Temperature control panel</div>
-                <div class="room-control-component">
-                    <div class="on-off-button">on-off-button</div>
-                </div>
-                <div class="room-status-component">
-                    The heating is 
-                    <span>value</span>
-                </div>
-                <div class="room-control-component">
-                    <div class="slider">slider</div>
-                </div>
-                <div class="room-status-component">
-                    The temperature is 
-                    <span>{{room.temperature}}</span>
+                <div class="room-control-panel">
+                    <div class="room-control-panel-title">Temperature control panel</div>
+                    <div class="room-control-component">
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="switch-slider round"></span>
+                        </label>
+                    </div>
+                    <div class="room-status-component">
+                        The heating is 
+                        <span>value</span>
+                    </div>
+                    <div class="room-control-component">
+                        <div class="slider">slider</div>
+                    </div>
+                    <div class="room-status-component">
+                        The temperature is 
+                        <span>{{room.temperature}}</span>
+                    </div>
                 </div>
             </div>
         </div>
