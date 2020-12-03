@@ -19,8 +19,8 @@ class Component {
             else if (event.target.type == "range") {
                 this.varValue = event.target.value;
             }
-            json = JSON.stringify(this);
-            connectionNotify(json);
+            let json_file = JSON.stringify(this);
+            connectionNotify(json_file);
         };
     }
     
