@@ -18,13 +18,17 @@ socket.on('sync', function(json) {
 socket.on('update-confirm', function(json) {
 
     console.log("[Socket]: Value updated on client confirmed.");
-    console.log(json);
+    let jsonObj = JSON.parse(json)
+    console.log(jsonObj);
+    tryUpdateStatuses(jsonObj['roomName'], jsonObj['varName'], jsonObj['varValue']);
 });
 
 socket.on('update', function(json) {
 
     console.log("[Socket]: Value updated on server.");
-    console.log(json);
+    let jsonObj = JSON.parse(json)
+    console.log(jsonObj);
+    tryUpdateStatuses(jsonObj['roomName'], jsonObj['varName'], jsonObj['varValue']);
     socket.emit('update-confirm', json);
 });
 

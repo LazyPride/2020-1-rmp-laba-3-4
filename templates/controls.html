@@ -6,6 +6,7 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style-slider.css') }}">
     
     <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='js/statuses.js')}}"></script>
     <script src="{{url_for('static', filename='js/connection.js')}}"></script>
     <script src="{{url_for('static', filename='js/componets.js')}}"></script>
 
@@ -31,16 +32,16 @@
                             <span class="switch-slider round"></span>
                         </label>
                     </div>
-                    <div class="room-status-component">
+                    <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="lightState">
                         The light is 
                         <span>{{room.lightState}}</span>
                     </div>
                     <div class="room-control-component">
                         <div class="slidecontainer">
-                            <input type="range" min="0" max="100" value="50" class="slider"  data-roomName="{{room.roomName}}" data-varName="lightBrightness">
+                            <input type="range" min="0" max="100" value="50" class="slider" data-roomName="{{room.roomName}}" data-varName="lightBrightness">
                         </div>
                     </div>
-                    <div class="room-status-component">
+                    <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="lightBrightness">
                         The light brightness is 
                         <span>{{room.lightBrightness}}</span>
                     </div>
@@ -50,21 +51,21 @@
                     <div class="room-control-component">
                         <span class="room-control-component-title">Heating switch: </span>
                         <label class="switch">
-                            <input type="checkbox"  data-roomName="{{room.roomName}}" data-varName="heaterState">
+                            <input type="checkbox" data-roomName="{{room.roomName}}" data-varName="heaterState">
                             <span class="switch-slider round"></span>
                         </label>
                     </div>
-                    <div class="room-status-component">
+                    <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="heaterState">
                         The heating is 
                         <span>*value*</span>
                     </div>
                     <div class="room-control-component">
                         <span class="room-control-component-title">Temperature: </span>
                         <div class="slidecontainer">
-                            <input type="range" min="0" max="100" value="50" class="slider"  data-roomName="{{room.roomName}}" data-varName="temperature">
+                            <input type="range" min="0" max="100" value="50" class="slider" data-roomName="{{room.roomName}}" data-varName="temperature">
                         </div>
                     </div>
-                    <div class="room-status-component">
+                    <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="temperature">
                         The temperature is 
                         <span>{{room.temperature}}</span>
                     </div>
