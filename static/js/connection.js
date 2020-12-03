@@ -13,25 +13,29 @@ socket.on('sync', function(json) {
     console.log("[Socket]: synchronizing...");
     // TODO: Synchronize variables OR make it all in the template
     console.log(json);
+    console.log("[Socket]: Synchronizing completed.");
+
 });
 
 socket.on('update-confirm', function(json) {
 
-    console.log("[Socket]: Value updated on client confirmed.");
+    console.log("[Socket]: Receive update-confirm from the server.");
     let jsonObj = JSON.parse(json)
-    console.log(jsonObj);
-    tryUpdateStatuses(jsonObj['roomName'], jsonObj['varName'], jsonObj['varValue']);
+    if (tryUpdateStatuses(jsonObj['roomName'], jsonObj['varName'], jsonObj['varValue']))
+        console.log("[Socket]: The value updated on the client UI.");
 });
 
 socket.on('update', function(json) {
 
-    console.log("[Socket]: Value updated on server.");
+    console.log("[Socket]: Receive update from the server");
     let jsonObj = JSON.parse(json)
-    console.log(jsonObj);
     tryUpdateStatuses(jsonObj['roomName'], jsonObj['varName'], jsonObj['varValue']);
     socket.emit('update-confirm', json);
+    console.log("[Socket]: Emit update-confirm to the server");
 });
 
 function connectionNotify(json) {
-    socket.emit('update', json)
+    socket.emit('update', json);
+    console.log("[Socket]: Emit update to the server");
+
 }

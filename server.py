@@ -29,16 +29,18 @@ def handle_my_custom_event():
     print('Start synchronizing...')
     global fileJSON
     socketio.emit('sync', fileJSON)
+    print('Synchronizing completed.')
+
 
 @socketio.on('update')
 def handle_message(json):
-    print('Value updated on client: ' + json)
+    print('Receive update from a client: ' + json)
     socketio.emit('update-confirm', json)
+    print('Emit update-confirm to a client: ' + json)
 
 @socketio.on('update-confirm')
 def handle_message(json):
-    print('Value updated on server confirmed: ' + json)
-
+    print('Receive update-confirm from a client: ' + json)
 
 if __name__ == '__main__':
     socketio.run(app, debug=True) 

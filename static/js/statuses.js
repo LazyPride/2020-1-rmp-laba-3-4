@@ -6,9 +6,10 @@ class Status {
     }
     
     tryUpdate(roomName, varName, value) {
-        if (this.roomName != roomName || this.varName != varName) return
+        if (this.roomName != roomName || this.varName != varName) return false;
         
         this.status.innerHTML = value;
+        return true;
     }
 }
 
@@ -21,13 +22,14 @@ function initializeStatuses() {
         // Push Status
         StatusCollection.push(status);
     }
-    console.log(StatusCollection);
 }
 
 function tryUpdateStatuses(roomName, varName, value) {
-    StatusCollection.forEach(status => {
-        status.tryUpdate(roomName, varName, value);
-    });
+    let hasUpdated = false;
+    for (let status of StatusCollection) {
+        if (status.tryUpdate(roomName, varName, value)) hasUpdated = true;
+    }
+    return hasUpdated;
 }
 
 document.addEventListener('DOMContentLoaded', function(){ 
