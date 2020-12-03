@@ -33,7 +33,11 @@ def handle_my_custom_event():
 @socketio.on('update')
 def handle_message(json):
     print('Value updated on client: ' + json)
-    socketio.emit('update', json)
+    socketio.emit('update-confirm', json)
+
+@socketio.on('update-confirm')
+def handle_message(json):
+    print('Value updated on server confirmed: ' + json)
 
 
 if __name__ == '__main__':

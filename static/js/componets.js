@@ -1,6 +1,5 @@
 class Component {
     constructor(control) {
-        console.log(control.dataset);
         this.control = control;
         this.roomName = control.dataset["roomname"];
         this.varName = control.dataset["varname"];
@@ -30,13 +29,11 @@ var ComponentCollection = [];
 
 function initializeComponets() {
     var controls = document.getElementsByTagName("input");
-    console.log(controls);
     for (let control of controls) {
         component = new Component(control);
         // Push Component
         ComponentCollection.push(component);
     }
-    console.log(ComponentCollection);
 }
 
 
