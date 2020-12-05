@@ -13,7 +13,8 @@ class Component {
         // Event handler. Gets value and notify connection
         this.control.onchange = (event) => {
             if (event.target.type == "checkbox") {
-                this.varValue = event.target.checked;
+                this.varValue = event.target.checked ? 1 : 0;
+                
             }
             else if (event.target.type == "range") {
                 this.varValue = event.target.value;
