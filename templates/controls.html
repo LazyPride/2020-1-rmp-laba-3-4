@@ -38,7 +38,7 @@
                     </div>
                     <div class="room-control-component">
                         <div class="slidecontainer">
-                            <input type="range" min="0" max="100" value="50" class="slider" data-roomName="{{room.roomName}}" data-varName="lightBrightness">
+                            <input type="range" min="0" max="100" value="{{room.lightBrightness}}" class="slider" data-roomName="{{room.roomName}}" data-varName="lightBrightness">
                         </div>
                     </div>
                     <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="lightBrightness">
@@ -51,18 +51,21 @@
                     <div class="room-control-component">
                         <span class="room-control-component-title">Heating switch: </span>
                         <label class="switch">
-                            <input type="checkbox" data-roomName="{{room.roomName}}" data-varName="heaterState">
+                            <input type="checkbox" data-roomName="{{room.roomName}}" data-varName="isHeatingOn"
+                            {% if room.isHeatingOn %}
+                            checked
+                            {% endif %}>
                             <span class="switch-slider round"></span>
                         </label>
                     </div>
-                    <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="heaterState">
+                    <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="isHeatingOn">
                         The heating is 
-                        <span>*value*</span>
+                        <span>{{room.isHeatingOn}}</span>
                     </div>
                     <div class="room-control-component">
                         <span class="room-control-component-title">Temperature: </span>
                         <div class="slidecontainer">
-                            <input type="range" min="0" max="100" value="50" class="slider" data-roomName="{{room.roomName}}" data-varName="temperature">
+                            <input type="range" min="0" max="100" value="{{room.temperature}}" class="slider" data-roomName="{{room.roomName}}" data-varName="temperature">
                         </div>
                     </div>
                     <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="temperature">
