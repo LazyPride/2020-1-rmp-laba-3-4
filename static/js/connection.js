@@ -21,8 +21,7 @@ socket.on('update-confirm', function(json) {
 
     console.log("[Socket]: Receive update-confirm from the server.");
     let jsonObj = JSON.parse(json)
-    if (tryUpdateStatuses(jsonObj['roomName'], jsonObj['varName'], jsonObj['varValue']))
-        console.log("[Socket]: The value updated on the client UI.");
+    tryUpdateStatuses(jsonObj['roomName'], jsonObj['varName'], jsonObj['varValue'])
 });
 
 socket.on('update', function(json) {

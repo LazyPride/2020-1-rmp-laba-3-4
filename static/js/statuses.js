@@ -27,7 +27,10 @@ function initializeStatuses() {
 function tryUpdateStatuses(roomName, varName, value) {
     let hasUpdated = false;
     for (let status of StatusCollection) {
-        if (status.tryUpdate(roomName, varName, value)) hasUpdated = true;
+        if (status.tryUpdate(roomName, varName, value)) {
+            hasUpdated = true;
+            console.log("[Status]: The " + varName + " in the " + roomName + " is " + value);
+        }
     }
     return hasUpdated;
 }
