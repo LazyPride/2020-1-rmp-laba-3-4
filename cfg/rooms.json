@@ -4,20 +4,23 @@
         "isLightOn": 1,
         "lightBrightness": 0,
         "isHeatingOn": 1,
-        "temperature": 12
+        "temperature": 12,
+        "maxTemperature": 12
     },
     {
         "roomName": "Room1",
         "isLightOn": 0,
         "lightBrightness": 0,
         "isHeatingOn": 0,
-        "temperature": 40
+        "temperature": 40,
+        "maxTemperature": 12
     },
     {
         "roomName": "Room2",
         "isLightOn": 0,
         "lightBrightness": 12,
         "isHeatingOn": 0,
-        "temperature": 3
+        "temperature": 3,
+        "maxTemperature": 12
     }
 ]

@@ -37,6 +37,7 @@
                         <span>{{room.isLightOn}}</span>
                     </div>
                     <div class="room-control-component">
+                        <span class="room-control-component-title">Light brightness: </span>
                         <div class="slidecontainer">
                             <input type="range" min="0" max="100" value="{{room.lightBrightness}}" class="slider" data-roomName="{{room.roomName}}" data-varName="lightBrightness">
                         </div>
@@ -63,10 +64,14 @@
                         <span>{{room.isHeatingOn}}</span>
                     </div>
                     <div class="room-control-component">
-                        <span class="room-control-component-title">Temperature: </span>
+                        <span class="room-control-component-title">Max temperature: </span>
                         <div class="slidecontainer">
-                            <input type="range" min="0" max="100" value="{{room.temperature}}" class="slider" data-roomName="{{room.roomName}}" data-varName="temperature">
+                            <input type="range" min="0" max="100" value="{{room.maxTemperature}}" class="slider" data-roomName="{{room.roomName}}" data-varName="maxTemperature">
                         </div>
+                    </div>
+                    <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="maxTemperature">
+                        The max temperature is 
+                        <span>{{room.maxTemperature}}</span>
                     </div>
                     <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="temperature">
                         The temperature is 

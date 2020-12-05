@@ -14,6 +14,7 @@ socket.on('sync', function(json) {
     for (let obj of json) {
         tryUpdateStatuses(obj["roomName"], "isLightOn", obj["isLightOn"]);
         tryUpdateStatuses(obj["roomName"], "lightBrightness", obj["lightBrightness"]);
+        tryUpdateStatuses(obj["roomName"], "isHeatingOn", obj["isHeatingOn"]);
         tryUpdateStatuses(obj["roomName"], "temperature", obj["temperature"]);
     }
     console.log("[Socket]: Synchronizing completed.");
@@ -28,7 +29,6 @@ socket.on('update-confirm', function(json) {
 });
 
 socket.on('update', function(json) {
-
     console.log("[Socket]: Receive update from the server");
     let jsonObj = JSON.parse(json)
     tryUpdateStatuses(jsonObj['roomName'], jsonObj['varName'], jsonObj['varValue']);

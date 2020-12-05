@@ -4,7 +4,7 @@ class Component {
         this.roomName = control.dataset["roomname"];
         this.varName = control.dataset["varname"];
         if (control.type == "checkbox") {
-            this.varValue = control.checked;
+            this.varValue = control.checked ? 1 : 0;
         }
         else if (control.type == "range") {
             this.varValue = control.value;
