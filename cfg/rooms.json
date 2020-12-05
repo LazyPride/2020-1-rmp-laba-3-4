@@ -1,20 +1,23 @@
 [
     {
         "roomName": "Dinning",
-        "lightState": 1,
+        "isLightOn": 1,
         "lightBrightness": 0,
+        "isHeatingOn": 1,
         "temperature": 12
     },
     {
         "roomName": "Room1",
-        "lightState": 0,
+        "isLightOn": 0,
         "lightBrightness": 0,
+        "isHeatingOn": 0,
         "temperature": 40
     },
     {
         "roomName": "Room2",
-        "lightState": 0,
+        "isLightOn": 0,
         "lightBrightness": 12,
+        "isHeatingOn": 0,
         "temperature": 3
     }
 ]
