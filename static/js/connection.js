@@ -12,7 +12,7 @@ socket.on('connect', function() {
 socket.on('sync', function(json) {
     console.log("[Socket]: synchronizing...");
     for (let obj of json) {
-        tryUpdateStatuses(obj["roomName"], "lightState", obj["lightState"]);
+        tryUpdateStatuses(obj["roomName"], "isLightOn", obj["isLightOn"]);
         tryUpdateStatuses(obj["roomName"], "lightBrightness", obj["lightBrightness"]);
         tryUpdateStatuses(obj["roomName"], "temperature", obj["temperature"]);
     }

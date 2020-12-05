@@ -25,16 +25,16 @@
                     <div class="room-control-component">
                         <span class="room-control-component-title">Light switch: </span>
                         <label class="switch">
-                            <input type="checkbox" data-roomName="{{room.roomName}}" data-varName="lightState"
-                            {% if room.lightState %}
+                            <input type="checkbox" data-roomName="{{room.roomName}}" data-varName="isLightOn"
+                            {% if room.isLightOn %}
                             checked
                             {% endif %}>
                             <span class="switch-slider round"></span>
                         </label>
                     </div>
-                    <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="lightState">
+                    <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="isLightOn">
                         The light is 
-                        <span>{{room.lightState}}</span>
+                        <span>{{room.isLightOn}}</span>
                     </div>
                     <div class="room-control-component">
                         <div class="slidecontainer">
