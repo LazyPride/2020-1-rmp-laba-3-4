@@ -11,8 +11,11 @@ socket.on('connect', function() {
 
 socket.on('sync', function(json) {
     console.log("[Socket]: synchronizing...");
-    // TODO: Synchronize variables OR make it all in the template
-    console.log(json);
+    for (let obj of json) {
+        tryUpdateStatuses(obj["roomName"], "lightState", obj["lightState"]);
+        tryUpdateStatuses(obj["roomName"], "lightBrightness", obj["lightBrightness"]);
+        tryUpdateStatuses(obj["roomName"], "temperature", obj["temperature"]);
+    }
     console.log("[Socket]: Synchronizing completed.");
 
 });
