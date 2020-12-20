@@ -1,6 +1,7 @@
 console.log("[Socket]: Initialization...");
 var socket = io();
 console.log("[Socket]: Created.");
+var chart = new MyChart();
 
 socket.on('connect', function() {
     console.log("[Socket]: Connected.");
@@ -34,6 +35,11 @@ socket.on('update', function(json) {
     console.log("[Socket]: Receive update from the server");
     let jsonObj = JSON.parse(json);
     tryUpdateStatuses(jsonObj['id'], jsonObj['var_name'], jsonObj['var_val']);
+    
+    if (jsonObj['id'] == 'heater_1' && jsonObj['var_name'] == 'now') {
+        chart.add(jsonObj['var_val']);
+    }
+    
     socket.emit('update-confirm', json);
     console.log("[Socket]: Emit update-confirm to the server");
 });

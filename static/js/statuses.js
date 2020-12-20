@@ -35,7 +35,6 @@ function tryUpdateStatuses(id, varName, value) {
     }
     return hasUpdated;
 }
-
 document.addEventListener('DOMContentLoaded', function(){ 
     initializeStatuses();
 });
