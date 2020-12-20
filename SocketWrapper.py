@@ -11,6 +11,9 @@ class SocketWrapper(object):
     def tie(self, socket):
         self.socket = socket
         
+    def emmit(self, topic, json):
+        self.socket.emmit(topic, json)
+        
     def emmit_update(self, json):
         # TODO: Add logging
         self.socket.emmit('update', json)
