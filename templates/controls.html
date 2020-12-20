@@ -18,66 +18,92 @@
     <div class="apartment">
         {% for room in rooms %}
         <div class="room">
-            <div class="room-title">"{{room.roomName}}"</div>
+            <div class="room-title">"{{room.room_name}}"</div>
             <div class="room-control-panels-collection">
-                <div class="room-control-panel">
-                    <div class="room-control-panel-title">Light control panel</div>
-                    <div class="room-control-component">
-                        <span class="room-control-component-title">Light switch: </span>
-                        <label class="switch">
-                            <input type="checkbox" data-roomName="{{room.roomName}}" data-varName="isLightOn"
-                            {% if room.isLightOn %}
-                            checked
-                            {% endif %}>
-                            <span class="switch-slider round"></span>
-                        </label>
-                    </div>
-                    <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="isLightOn">
-                        The light is 
-                        <span>{{room.isLightOn}}</span>
-                    </div>
-                    <div class="room-control-component">
-                        <span class="room-control-component-title">Light brightness: </span>
-                        <div class="slidecontainer">
-                            <input type="range" min="0" max="100" value="{{room.lightBrightness}}" class="slider" data-roomName="{{room.roomName}}" data-varName="lightBrightness">
+                {% for component in room.components %}
+                    {% if component.type == "heating" %}
+                        <div class="room-control-panel">
+                            <div class="room-control-panel-title">Heating</div>
+                            <div class="room-control-component">
+                                <span class="room-control-component-title">Heating switch: </span>
+                                <label class="switch">
+                                    <input type="checkbox" data-room_name="{{room.room_name}}" data-id="{{component.id}}" data-var_name="is_on">
+                                    <span class="switch-slider round"></span>
+                                </label>
+                            </div>
+                            <div class="room-status-component" data-room_name="{{room.room_name}}" data-id="{{component.id}}" data-id="{{component.id}}" data-var_name="is_on">
+                                The heating is 
+                                <span>{{component.is_on}}</span>
+                            </div>
+                            <div class="room-control-component">
+                                <span class="room-control-component-title">Min temperature: </span>
+                                <div class="slidecontainer">
+                                    <input type="range" min="0" max="100" value="{{component.min}}" class="slider" data-room_name="{{room.room_name}}" data-id="{{component.id}}" data-var_name="min">
+                                </div>
+                            </div>
+                            <div class="room-control-component">
+                                <span class="room-control-component-title">Max temperature: </span>
+                                <div class="slidecontainer">
+                                    <input type="range" min="0" max="100" value="{{room.max}}" class="slider" data-room_name="{{room.room_name}}" data-id="{{component.id}}" data-var_name="max">
+                                </div>
+                            </div>
+                            <div class="room-status-component" data-room_name="{{room.room_name}}" data-id="{{component.id}}" data-var_name="max">
+                                The min temperature is 
+                                <span>{{component.min}}</span>
+                            </div>
+                            <div class="room-status-component" data-room_name="{{room.room_name}}" data-id="{{component.id}}" data-var_name="now">
+                                The temperature is 
+                                <span>{{component.now}}</span>
+                            </div>
+                            <div class="room-status-component" data-room_name="{{room.room_name}}" data-id="{{component.id}}" data-var_name="min">
+                                The max temperature is 
+                                <span>{{component.max}}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="lightBrightness">
-                        The light brightness is 
-                        <span>{{room.lightBrightness}}</span>
-                    </div>
-                </div>
-                <div class="room-control-panel">
-                    <div class="room-control-panel-title">Temperature control panel</div>
-                    <div class="room-control-component">
-                        <span class="room-control-component-title">Heating switch: </span>
-                        <label class="switch">
-                            <input type="checkbox" data-roomName="{{room.roomName}}" data-varName="isHeatingOn"
-                            {% if room.isHeatingOn %}
-                            checked
-                            {% endif %}>
-                            <span class="switch-slider round"></span>
-                        </label>
-                    </div>
-                    <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="isHeatingOn">
-                        The heating is 
-                        <span>{{room.isHeatingOn}}</span>
-                    </div>
-                    <div class="room-control-component">
-                        <span class="room-control-component-title">Max temperature: </span>
-                        <div class="slidecontainer">
-                            <input type="range" min="0" max="100" value="{{room.maxTemperature}}" class="slider" data-roomName="{{room.roomName}}" data-varName="maxTemperature">
+                    {% endif %}
+                    {% if component.type == "light_bulb" %}
+                        <div class="room-control-panel">
+                            <div class="room-control-panel-title">Light bulb</div>
+                            <div class="room-control-component">
+                                <span class="room-control-component-title">Light switch: </span>
+                                <label class="switch">
+                                    <input type="checkbox" data-room_name="{{room.room_name}}" data-id="{{component.id}}" data-var_name="is_on"/>
+                                    <span class="switch-slider round"></span>
+                                </label>
+                            </div>
+                            <div class="room-status-component" data-room_name="{{room.room_name}}" data-id="{{component.id}}" data-var_name="is_on">
+                                The light is 
+                                <span>{{component.is_on}}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="maxTemperature">
-                        The max temperature is 
-                        <span>{{room.maxTemperature}}</span>
-                    </div>
-                    <div class="room-status-component" data-roomName="{{room.roomName}}" data-varName="temperature">
-                        The temperature is 
-                        <span>{{room.temperature}}</span>
-                    </div>
-                </div>
+                    {% endif %}
+                    {% if component.type == "light_bulb_brightness" %}
+                        <div class="room-control-panel">
+                            <div class="room-control-panel-title">Light bulb brightness</div>
+                            <div class="room-control-component">
+                                <span class="room-control-component-title">Light switch: </span>
+                                <label class="switch">
+                                    <input type="checkbox" data-room_name="{{room.room_name}}" data-id="{{component.id}}" data-var_name="is_on"/>
+                                    <span class="switch-slider round"></span>
+                                </label>
+                            </div>
+                            <div class="room-status-component" data-room_name="{{room.room_name}}" data-id="{{component.id}}" data-var_name="isLightOn">
+                                The light is 
+                                <span>{{component.is_on}}</span>
+                            </div>
+                            <div class="room-control-component">
+                                <span class="room-control-component-title">Light brightness: </span>
+                                <div class="slidecontainer">
+                                    <input type="range" min="0" max="100" value="{{component.now}}" class="slider" data-room_name="{{room.room_name}}" data-id="{{component.id}}" data-var_name="now">
+                                </div>
+                            </div>
+                            <div class="room-status-component" data-room_name="{{room.room_name}}" data-id="{{component.id}}" data-var_name="now">
+                                The light brightness is 
+                                <span>{{component.now}}</span>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
         {% endfor %}
