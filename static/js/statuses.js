@@ -1,12 +1,13 @@
 class Status {
     constructor(status) {
         this.status = status.getElementsByTagName("span")[0];
-        this.roomName = status.dataset["roomname"];
-        this.varName = status.dataset["varname"];
+        this.room_name = status.dataset["room_name"];
+        this.id = status.dataset["id"];
+        this.var_name = status.dataset["var_name"];
     }
     
-    tryUpdate(roomName, varName, value) {
-        if (this.roomName != roomName || this.varName != varName) return false;
+    tryUpdate(id, varName, value) {
+        if (this.id != id || this.var_name != varName) return false;
         
         this.status.innerHTML = value;
         return true;
@@ -24,17 +25,16 @@ function initializeStatuses() {
     }
 }
 
-function tryUpdateStatuses(roomName, varName, value) {
+function tryUpdateStatuses(id, varName, value) {
     let hasUpdated = false;
     for (let status of StatusCollection) {
-        if (status.tryUpdate(roomName, varName, value)) {
+        if (status.tryUpdate(id, varName, value)) {
             hasUpdated = true;
-            console.log("[Status]: The " + varName + " in the " + roomName + " is " + value);
+            console.log("[Status]: " + id + ": The " + varName + " is " + value);
         }
     }
     return hasUpdated;
 }
-
 document.addEventListener('DOMContentLoaded', function(){ 
     initializeStatuses();
 });

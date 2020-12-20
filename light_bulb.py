@@ -1,4 +1,5 @@
 from ABCs import *
+from SocketWrapper import SocketWrapper
 
 class LightBulb(Component, Switchable):
     def __init__(self, id, is_on):

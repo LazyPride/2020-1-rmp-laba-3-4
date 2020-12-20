@@ -1,4 +1,5 @@
 from ABCs import *
+from SocketWrapper import SocketWrapper
 
 class LightBulbBrightness(Component, Switchable, Adjustable, Bounded):
     def __init__(self, id, is_on, now):

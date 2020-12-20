@@ -14,12 +14,13 @@ socketio = SocketIO(app)
 
 @app.route('/')
 def hello_world():
-    return render_template("controls.html", rooms=fileJSON)
+    return render_template("controls.html", rooms=House().getConfig()['rooms'])
 
 @socketio.on('message')
 def handle_message(message):
-    print('received message: ' + message)
-
+    #print('received message: ' + message)
+    pass
+    
 @socketio.on('sync')
 def handle_my_custom_event():
     print('Start synchronizing...')
@@ -28,22 +29,25 @@ def handle_my_custom_event():
 
 @socketio.on('update')
 def handle_message(json_msg):
-    print('Receive update from a client: ' + json_msg)
+    print('update')
+    #print('Receive update from a client: ' + json_msg)
     fileJSON = json.loads(json_msg)
     House().updateValue(fileJSON);
     SocketWrapper().emmit_update(json_msg)
-    print('Emit update-confirm to a client: ' + json_msg)
+    print('update end')
+    #print('Emit update-confirm to a client: ' + json_msg)
 
 @socketio.on('update-confirm')
 def handle_message(json):
-    print('Receive update-confirm from a client: ' + json)
+    print('update-confirm')
+    #print('Receive update-confirm from a client: ' + json)
 
 if __name__ == '__main__':
     SocketWrapper().tie(socketio)
     House().setConfig("./cfg/rooms.json")
     House().info()
-    #tkinterClient.init()
-    socketio.run(app, debug=True) 
+    threading.Timer(5, tkinterClient.init).start()
+    socketio.run(app, debug=False) 
     
     
 
