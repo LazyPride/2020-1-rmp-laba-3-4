@@ -6,6 +6,9 @@ class Component(ABC):
         super().__init__()
         #print("FROM Component: type:" + self.type)
         
+    def update_value(self, var_name, var):
+        pass
+        
     def setType(self, value):
         self.type = value
         
