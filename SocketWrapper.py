@@ -23,7 +23,7 @@ class SocketWrapper(object):
         msg = {}
         msg["id"] = id
         msg["var_name"] = var_name
-        msg["var"] = var
+        msg["var_val"] = var
         json_msg = json.dumps(msg)
         self.socket.emit('update', json_msg)
     

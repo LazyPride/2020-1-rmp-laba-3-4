@@ -25,7 +25,7 @@ class Room(object):
         
         for component in self.components:
             if component.id == json_cfg['id']:
-                component.update_value(json_cfg['var_name'], json_cfg['var'])
+                component.update_value(json_cfg['var_name'], json_cfg['var_val'])
         
     def getConfig(self):
         return self.config
