@@ -31,17 +31,15 @@ class Heater(Component, Switchable, Adjustable, Bounded):
             self.now -= 1
             if int(self.now) <= int(self.min):
                 self.turnOn()
-        self.__emmit__("temperature", self.now)
+        self.__emmit__("now", self.now)
 
     def turnOn(self):
         self.is_on = 1
-        print("The heater in {} is On({}) to {} degrees".format(self.roomName, self.is_on, self.max))
-        self.__emmit__("isHeatingOn", self.is_on)
+        self.__emmit__("is_on", self.is_on)
         
     def turnOff(self):
         self.is_on = 0
-        print("The heater in {} is Off({})".format(self.roomName, self.is_on))
-        self.__emmit__("isHeatingOn", self.is_on)
+        self.__emmit__("is_on", self.is_on)
         
     def setMin(self, min):
         self.min = min
@@ -62,10 +60,10 @@ class Heater(Component, Switchable, Adjustable, Bounded):
         elif var_name == 'max':
             self.setMax(var)
             
-    def __emmit__(self, varName, varValue):
+    def __emmit__(self, var_name, var):
         msg = {}
-        msg["roomName"] = self.roomName
-        msg["varName"] = varName
-        msg["varValue"] = varValue
+        msg["id"] = self.id
+        msg["var_name"] = var_name
+        msg["var"] = var
         json_msg = json.dumps(msg)
         SocketWrapper().update(json_msg)
