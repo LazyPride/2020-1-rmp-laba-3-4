@@ -24,7 +24,7 @@ class Room(object):
             return
         
         for component in self.components:
-            if component.getType() == json_cfg['type']:
+            if component.id == json_cfg['id']:
                 component.update_value(json_cfg['value_name'], json_cfg['value'])
         
     def getConfig(self):
