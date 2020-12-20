@@ -12,11 +12,11 @@ class SocketWrapper(object):
         self.socket = socket
         
     def emmit(self, topic, json):
-        self.socket.emmit(topic, json)
+        self.socket.emit(topic, json)
         
     def emmit_update(self, json):
         # TODO: Add logging
-        self.socket.emmit('update', json)
+        self.socket.emit('update', json)
     
     def emmit_update_var(self, id, var_name, var):
         print("[Socket][Emmit]: id: {}, var_name: {}, var: {}".format(id, var_name, var))
@@ -25,9 +25,9 @@ class SocketWrapper(object):
         msg["var_name"] = var_name
         msg["var"] = var
         json_msg = json.dumps(msg)
-        #self.socket.emmit('update', json_msg)
+        self.socket.emit('update', json_msg)
     
     
     def emmit_confirm(self, json):
         # TODO: Add logging
-        self.socket.emmit('update-confirm', json)
+        self.socket.emit('update-confirm', json)

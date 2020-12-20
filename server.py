@@ -39,12 +39,11 @@ def handle_message(json):
     print('Receive update-confirm from a client: ' + json)
 
 if __name__ == '__main__':
-
     SocketWrapper().tie(socketio)
     House().setConfig("./cfg/rooms.json")
     House().info()
-    tkinterClient.init()
-    #socketio.run(app, debug=True) 
+    #tkinterClient.init()
+    socketio.run(app, debug=True) 
     
     
 
