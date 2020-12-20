@@ -42,6 +42,14 @@ class Heater(Component, Switchable, Adjustable, Bounded):
         print("The heater in {} is Off({})".format(self.roomName, self.is_on))
         self.__emmit__("isHeatingOn", self.is_on)
         
+    def setMin(self, min):
+        self.min = min
+        self.__emmit__("min", self.min)
+
+    def setMax(self, max):
+        self.max = max
+        self.__emmit__("max", self.max)
+        
     def update(self, jsonFile):
         if jsonFile["roomName"] == self.roomName:
             if jsonFile["varName"] == "isHeatingOn":
