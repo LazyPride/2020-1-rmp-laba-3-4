@@ -1,39 +1,29 @@
 from flask import Flask
 from flask import json
-from flask import render_template
+from flask import render_template 
 from flask_socketio import SocketIO
-from tkinter import *
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-from datetime import datetime
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 from heater import *
 from SocketWrapper import SocketWrapper
-from House import House
-import tkinterClient
+from house import House
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 's1ckret'
 socketio = SocketIO(app)
 
-
 @app.route('/')
 def hello_world():
     return render_template("controls.html", rooms=fileJSON)
 
-
 @socketio.on('message')
 def handle_message(message):
     print('received message: ' + message)
-
 
 @socketio.on('sync')
 def handle_my_custom_event():
     print('Start synchronizing...')
     SocketWrapper().emmit('sync', House().getConfig())
     print('Synchronizing completed.')
-
 
 @socketio.on('update')
 def handle_message(json_msg):
@@ -43,15 +33,16 @@ def handle_message(json_msg):
     SocketWrapper().emmit_update(json_msg)
     print('Emit update-confirm to a client: ' + json_msg)
 
-
 @socketio.on('update-confirm')
 def handle_message(json):
     print('Receive update-confirm from a client: ' + json)
 
-
 if __name__ == '__main__':
+
     SocketWrapper().tie(socketio)
     House().setConfig("./cfg/rooms.json")
-    tkinterClient.init()
-    # House().info()
-    # socketio.run(app, debug=True)
+    House().info()
+    #socketio.run(app, debug=True) 
+    
+    
+
