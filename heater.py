@@ -50,16 +50,17 @@ class Heater(Component, Switchable, Adjustable, Bounded):
         self.max = max
         self.__emmit__("max", self.max)
         
-    def update(self, jsonFile):
-        if jsonFile["roomName"] == self.roomName:
-            if jsonFile["varName"] == "isHeatingOn":
-                if jsonFile["varValue"] == 1:
-                    self.turnOn()
-                else:
-                    self.turnOff()
-            elif jsonFile["varName"] == "maxerature":
-                self.max = jsonFile["varValue"]
-
+    def update_value(self, var_name, var):
+        if var_name == 'is_on':
+            if var == 1:
+                self.turnOn()
+            elif var == 0:
+                self.turnOff()
+        elif var_name == 'min':
+            self.setMin(var)
+        elif var_name == 'max':
+            self.setMax(var)
+            
     def __emmit__(self, varName, varValue):
         msg = {}
         msg["roomName"] = self.roomName
