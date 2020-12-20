@@ -40,14 +40,15 @@ class Room(object):
         for component in components:  
             entity = Component()
             if component['type'] == 'heating':
-                entity = Heater(component['is_on'],
+                entity = Heater(component['id'],
+                                component['is_on'],
                                 component['min'],
                                 component['max'],
                                 component['now'])
                 HeaterWrapper().tie(entity)
             elif component['type'] == 'light_bulb':
-                entity = LightBulb(component['is_on'])
+                entity = LightBulb(component['id'], component['is_on'])
             elif component['type'] == 'light_bulb_brightness':
-                entity = LightBulbBrightness(component['is_on'], component['now'])
+                entity = LightBulbBrightness(component['id'], component['is_on'], component['now'])
             
             self.components.append(entity)

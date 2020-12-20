@@ -3,9 +3,10 @@ from SocketWrapper import SocketWrapper
 from ABCs import *
 
 class Heater(Component, Switchable, Adjustable, Bounded):
-    def __init__(self, is_on, min, max, now):
+    def __init__(self, id, is_on, min, max, now):
         super().__init__()
         self.type = 'Heater'
+        self.id = id
         self.is_on = is_on
         self.min = min
         self.max = max
@@ -13,6 +14,7 @@ class Heater(Component, Switchable, Adjustable, Bounded):
         
     def info(self):
         print("[Component]:")
+        print("\t id:" + self.id)
         print("\t type:" + self.type)
         print("\t is_on:" + str(self.is_on))
         print("\t min:" + str(self.min))
