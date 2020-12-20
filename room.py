@@ -16,6 +16,9 @@ class Room(object):
         self.components = []
         self.__parse_components(self.config['components'])
         
+    def getName(self):
+        return self.room_name
+        
     def updateValue(self, json_cfg):
         if self.room_name != json_cfg['room_name']:
             return
