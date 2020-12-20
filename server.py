@@ -5,7 +5,11 @@ from flask_socketio import SocketIO
 
 from heater import *
 from SocketWrapper import SocketWrapper
-from House import House
+from house import House
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 's1ckret'
+socketio = SocketIO(app)
 
 @app.route('/')
 def hello_world():
@@ -34,15 +38,11 @@ def handle_message(json):
     print('Receive update-confirm from a client: ' + json)
 
 if __name__ == '__main__':
-    app = Flask(__name__)
-    app.config['SECRET_KEY'] = 's1ckret'
-    socketio = SocketIO(app)
 
     SocketWrapper().tie(socketio)
     House().setConfig("./cfg/rooms.json")
-    print(House().getConfig())
-
-    socketio.run(app, debug=True) 
+    House().info()
+    #socketio.run(app, debug=True) 
     
     
 
