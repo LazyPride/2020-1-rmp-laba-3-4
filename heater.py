@@ -24,14 +24,13 @@ class Heater(Component, Switchable, Adjustable, Bounded):
     def start(self, updateTime):
         threading.Timer(updateTime, self.start, [updateTime],{} ).start()
         if self.is_on == 1:
+            self.now += 1
             if int(self.now) >= int(self.max):
                 self.turnOff()
-            else:
-                if int(self.now) < 100:
-                    self.now = self.now + 1
         else:
-            if self.now > 0:
-                self.now = self.now - 1
+            self.now -= 1
+            if int(self.now) <= int(self.min):
+                self.turnOn()
         self.__emmit__("temperature", self.now)
 
     def turnOn(self):
