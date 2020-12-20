@@ -1,26 +1,42 @@
-[
+{
+  "rooms": [
     {
-        "roomName": "Dinning",
-        "isLightOn": 1,
-        "lightBrightness": 0,
-        "isHeatingOn": 1,
-        "temperature": 12,
-        "maxTemperature": 12
+      "room_name": "Dinary",
+      "components": [
+        {
+          "type": "heating",
+          "min": 12,
+          "max": 35,
+          "now": 23,
+          "is_on": 1
+        },
+        {
+          "type": "light_bulb",
+          "is_on": 1
+        },
+        {
+          "type": "light_bulb_brightness",
+          "now": 23,
+          "is_on": 1
+        }
+      ]
     },
     {
-        "roomName": "Room1",
-        "isLightOn": 0,
-        "lightBrightness": 0,
-        "isHeatingOn": 0,
-        "temperature": 40,
-        "maxTemperature": 12
-    },
-    {
-        "roomName": "Room2",
-        "isLightOn": 0,
-        "lightBrightness": 12,
-        "isHeatingOn": 0,
-        "temperature": 3,
-        "maxTemperature": 12
+      "room_name": "Bath",
+      "components": [
+        {
+          "type": "heating",
+          "min": 20,
+          "max": 40,
+          "now": 25,
+          "is_on": 0
+        },
+        {
+          "type": "light_bulb_brightness",
+          "now": 100,
+          "is_on": 1
+        }
+      ]
     }
-]
+  ]
+}
