@@ -46,6 +46,7 @@ class Room(object):
                                 component['max'],
                                 component['now'])
                 HeaterWrapper().tie(entity)
+                entity.start(1.0)
             elif component['type'] == 'light_bulb':
                 entity = LightBulb(component['id'], component['is_on'])
             elif component['type'] == 'light_bulb_brightness':
