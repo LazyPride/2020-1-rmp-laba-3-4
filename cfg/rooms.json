@@ -4,6 +4,7 @@
       "room_name": "Dinary",
       "components": [
         {
+          "id" : "heater_1",
           "type": "heating",
           "min": 12,
           "max": 35,
@@ -11,10 +12,12 @@
           "is_on": 1
         },
         {
+          "id" : "light_bulb_1",
           "type": "light_bulb",
           "is_on": 1
         },
         {
+          "id" : "light_bulb_brightness_1",
           "type": "light_bulb_brightness",
           "now": 23,
           "is_on": 1
@@ -25,6 +28,7 @@
       "room_name": "Bath",
       "components": [
         {
+          "id" : "heater_2",
           "type": "heating",
           "min": 20,
           "max": 40,
@@ -32,6 +36,7 @@
           "is_on": 0
         },
         {
+          "id" : "light_bulb_brightness_2",
           "type": "light_bulb_brightness",
           "now": 100,
           "is_on": 1

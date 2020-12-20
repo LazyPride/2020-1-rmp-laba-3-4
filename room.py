@@ -16,8 +16,16 @@ class Room(object):
         self.components = []
         self.__parse_components(self.config['components'])
         
-    def updateValue(self, jsonFile):
-        pass
+    def getName(self):
+        return self.room_name
+        
+    def updateValue(self, json_cfg):
+        if self.room_name != json_cfg['room_name']:
+            return
+        
+        for component in self.components:
+            if component.id == json_cfg['id']:
+                component.update_value(json_cfg['value_name'], json_cfg['value'])
         
     def getConfig(self):
         return self.config
@@ -32,14 +40,16 @@ class Room(object):
         for component in components:  
             entity = Component()
             if component['type'] == 'heating':
-                entity = Heater(component['is_on'],
+                entity = Heater(component['id'],
+                                component['is_on'],
                                 component['min'],
                                 component['max'],
                                 component['now'])
                 HeaterWrapper().tie(entity)
+                entity.start(1.0)
             elif component['type'] == 'light_bulb':
-                entity = LightBulb(component['is_on'])
+                entity = LightBulb(component['id'], component['is_on'])
             elif component['type'] == 'light_bulb_brightness':
-                entity = LightBulbBrightness(component['is_on'], component['now'])
+                entity = LightBulbBrightness(component['id'], component['is_on'], component['now'])
             
             self.components.append(entity)

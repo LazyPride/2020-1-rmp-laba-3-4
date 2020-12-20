@@ -22,8 +22,9 @@ class House(object):
         for room in self.rooms:
             room.info()
    
-    def updateValue(self, jsonFile):
-        pass
+    def updateValue(self, json_cfg):
+        for room in self.rooms:
+            room.updateValue(json_cfg)
         
     def getConfig(self):
         return self.config
