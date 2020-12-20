@@ -31,23 +31,23 @@ class Heater(Component, Switchable, Adjustable, Bounded):
             self.now -= 1
             if int(self.now) <= int(self.min):
                 self.turnOn()
-        self.__emmit__("now", self.now)
+        SocketWrapper().emmit_update_var(self.id, "now", self.now)
 
     def turnOn(self):
         self.is_on = 1
-        self.__emmit__("is_on", self.is_on)
+        SocketWrapper().emmit_update_var(self.id, "is_on", self.is_on)
         
     def turnOff(self):
         self.is_on = 0
-        self.__emmit__("is_on", self.is_on)
+        SocketWrapper().emmit_update_var(self.id, "is_on", self.is_on)
         
     def setMin(self, min):
         self.min = min
-        self.__emmit__("min", self.min)
+        SocketWrapper().emmit_update_var(self.id, "min", self.min)
 
     def setMax(self, max):
         self.max = max
-        self.__emmit__("max", self.max)
+        SocketWrapper().emmit_update_var(self.id, "max", self.max)
         
     def update_value(self, var_name, var):
         if var_name == 'is_on':
@@ -60,10 +60,3 @@ class Heater(Component, Switchable, Adjustable, Bounded):
         elif var_name == 'max':
             self.setMax(var)
             
-    def __emmit__(self, var_name, var):
-        msg = {}
-        msg["id"] = self.id
-        msg["var_name"] = var_name
-        msg["var"] = var
-        json_msg = json.dumps(msg)
-        SocketWrapper().update(json_msg)
