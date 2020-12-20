@@ -5,7 +5,8 @@ from flask_socketio import SocketIO
 
 from heater import *
 from SocketWrapper import SocketWrapper
-from house import House
+from House import House
+import tkinterClient
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 's1ckret'
@@ -42,6 +43,7 @@ if __name__ == '__main__':
     SocketWrapper().tie(socketio)
     House().setConfig("./cfg/rooms.json")
     House().info()
+    tkinterClient.init()
     #socketio.run(app, debug=True) 
     
     

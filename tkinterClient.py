@@ -19,12 +19,14 @@ def init():
     def func_data_max():
         global data_max
         my_max = int(spin_max.get())
+        HeaterWrapper().heater.setMax(my_max)
         data_max = [my_max] * len(sensor_data)
 
 
     def func_data_min():
         global data_min
         my_min = int(spin_min.get())
+        HeaterWrapper().heater.setMin(my_min)
         data_min = [my_min] * len(sensor_data)
 
 
