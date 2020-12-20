@@ -1,23 +1,24 @@
 class Component {
     constructor(control) {
         this.control = control;
-        this.roomName = control.dataset["roomname"];
-        this.varName = control.dataset["varname"];
+        this.room_name = control.dataset["room_name"];
+        this.id = control.dataset["id"];
+        this.var_name = control.dataset["var_name"];
         if (control.type == "checkbox") {
-            this.varValue = control.checked ? 1 : 0;
+            this.var_val = control.checked ? 1 : 0;
         }
         else if (control.type == "range") {
-            this.varValue = control.value;
+            this.var_val = control.value;
         }
         
         // Event handler. Gets value and notify connection
         this.control.onchange = (event) => {
             if (event.target.type == "checkbox") {
-                this.varValue = event.target.checked ? 1 : 0;
+                this.var_val = event.target.checked ? 1 : 0;
                 
             }
             else if (event.target.type == "range") {
-                this.varValue = event.target.value;
+                this.var_val = event.target.value;
             }
             let json_file = JSON.stringify(this);
             connectionNotify(json_file);
