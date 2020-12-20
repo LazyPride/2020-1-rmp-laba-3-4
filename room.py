@@ -5,6 +5,7 @@ from ABCs import *
 from light_bulb import LightBulb
 from light_bulb_brightness import LightBulbBrightness
 from heater import Heater
+from HeaterWrapper import HeaterWrapper
 
 
 class Room(object):
@@ -35,6 +36,7 @@ class Room(object):
                                 component['min'],
                                 component['max'],
                                 component['now'])
+                HeaterWrapper().tie(entity)
             elif component['type'] == 'light_bulb':
                 entity = LightBulb(component['is_on'])
             elif component['type'] == 'light_bulb_brightness':
