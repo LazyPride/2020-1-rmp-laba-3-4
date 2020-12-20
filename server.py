@@ -14,7 +14,7 @@ socketio = SocketIO(app)
 
 @app.route('/')
 def hello_world():
-    return render_template("controls.html", rooms=fileJSON)
+    return render_template("controls.html", rooms=House().getConfig()['rooms'])
 
 @socketio.on('message')
 def handle_message(message):
