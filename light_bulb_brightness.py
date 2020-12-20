@@ -19,3 +19,26 @@ class LightBulbBrightness(Component, Switchable, Adjustable, Bounded):
         print("\t max:" + str(self.max))
         print("\t now:" + str(self.now))
     
+    def turnOn(self):
+        self.is_on = 1
+        SocketWrapper().emmit_update_var(self.id, "is_on", self.is_on)
+        
+    def turnOff(self):
+        self.is_on = 0
+        SocketWrapper().emmit_update_var(self.id, "is_on", self.is_on)
+        
+    def adjust(self, value):
+        self.now = value
+        SocketWrapper().emmit_update_var(self.id, "now", self.now)
+
+        
+    def update_value(self, var_name, var):
+        if var_name == 'is_on':
+            if var == 1:
+                self.turnOn()
+            elif var == 0:
+                self.turnOff()
+        elif var_name == 'now':
+            self.adjust(var)
+        
+            
